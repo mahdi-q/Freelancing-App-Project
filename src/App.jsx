@@ -1,5 +1,14 @@
+import { Route, Routes } from "react-router-dom";
+import Auth from "./Pages/Auth";
+
 function App() {
-  return <h1 className="text-3xl text-center">پروژه اپلیکیشن فریلنسری</h1>;
+  return (
+    <div className="container xl:max-w-screen-xl">
+      <Routes>
+        <Route path="/auth" element={<Auth />} />
+      </Routes>
+    </div>
+  );
 }
 
 export default App;
