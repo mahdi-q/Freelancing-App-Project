@@ -36,14 +36,30 @@
   }
 }
 
+@layer components {
+  .textField__input {
+    @apply w-full rounded-md border border-secondary-300 p-2 text-secondary-900 transition-all duration-300 hover:border-primary-500 focus:border-primary-500 focus:shadow-sm focus:shadow-primary-400;
+  }
+
+  .btn {
+    @apply rounded-lg font-bold text-secondary-50 shadow-md transition-all duration-300;
+  }
+
+  .btn--primary {
+    @apply bg-primary-900 p-3 shadow-primary-500 hover:bg-primary-800;
+  }
+
+  .btn--secondary {
+    @apply bg-secondary-600 p-2 shadow-secondary-300 hover:bg-secondary-500;
+  }
+}
+
 *,
 *::after,
 *::before {
   margin: 0;
   padding: 0;
-  border: none;
   outline: none;
-  list-style: none;
   box-sizing: border-box;
   scroll-behavior: smooth;
 }
@@ -63,4 +79,8 @@ button:disabled {
   cursor: default;
   pointer-events: none;
   box-shadow: none;
+}
+
+label {
+  display: block;
 }
