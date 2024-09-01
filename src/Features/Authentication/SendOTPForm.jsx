@@ -1,13 +1,10 @@
-import { useState } from "react";
 import TextFieldInput from "../../UI/TextFieldInput";
 import { useMutation } from "@tanstack/react-query";
 import { getOtp } from "../../Services/authService";
 import toast from "react-hot-toast";
 import Loader from "../../UI/Loader";
 
-function SendOTPForm({ setStep }) {
-  const [phoneNumber, setPhoneNumber] = useState("");
-
+function SendOTPForm({ setStep, phoneNumber, onChange }) {
   const { isPending, mutateAsync } = useMutation({
     mutationFn: getOtp,
   });
@@ -35,7 +32,7 @@ function SendOTPForm({ setStep }) {
         label={"لطفا شماره موبایل خود را وارد کنید"}
         name={"phoneNumber"}
         value={phoneNumber}
-        onChange={(e) => setPhoneNumber(e.target.value)}
+        onChange={onChange}
       />
 
       {isPending ? (
