@@ -9,7 +9,11 @@ function AuthContainer() {
   const [step, setStep] = useState(2);
   const [phoneNumber, setPhoneNumber] = useState("09370282373");
 
-  const { isPending, mutateAsync } = useMutation({
+  const {
+    isPending,
+    data: otpResponse,
+    mutateAsync,
+  } = useMutation({
     mutationFn: getOtp,
   });
 
@@ -42,6 +46,7 @@ function AuthContainer() {
             setStep={setStep}
             phoneNumber={phoneNumber}
             onResendOtp={sendOtpHandler}
+            otpResponse={otpResponse}
           />
         );
       default:

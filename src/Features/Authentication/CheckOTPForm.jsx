@@ -5,11 +5,10 @@ import { checkOtp } from "../../Services/authService";
 import toast from "react-hot-toast";
 import Loader from "../../UI/Loader";
 import { useNavigate } from "react-router-dom";
-import { HiArrowRight } from "react-icons/hi";
 
 const RESEND_TIME = 90;
 
-function CheckOTPForm({ setStep, phoneNumber, onResendOtp }) {
+function CheckOTPForm({ setStep, phoneNumber, onResendOtp, otpResponse }) {
   const [otp, setOtp] = useState("");
   const [time, setTime] = useState(RESEND_TIME);
 
@@ -54,17 +53,14 @@ function CheckOTPForm({ setStep, phoneNumber, onResendOtp }) {
 
   return (
     <div className="mx-4 space-y-3 rounded-lg border border-secondary-300 px-3 py-6">
-      <button
-        className="flex h-6 w-6 items-center justify-center rounded-full bg-primary-900"
-        onClick={() => setStep((s) => s - 1)}
-      >
-        <HiArrowRight className="h-4 w-4 text-secondary-0" />
-      </button>
-
       <form className="space-y-6" onSubmit={checkOtpHandler}>
-        <p className="mb-2 mr-2 text-secondary-600">
-          کد تایید ارسال شده را وارد کنید
-        </p>
+        {otpResponse ? (
+          <p className="mb-2 mr-2 text-secondary-600">{otpResponse?.message}</p>
+        ) : (
+          <p className="mb-2 mr-2 text-secondary-600">
+            کد تایید ارسال شده را وارد کنید
+          </p>
+        )}
 
         <OTPInput
           value={otp}
@@ -95,16 +91,26 @@ function CheckOTPForm({ setStep, phoneNumber, onResendOtp }) {
         )}
       </form>
 
-      <div className="flex items-center justify-center">
+      <div className="flex items-center justify-between">
         {time > 0 ? (
           <p className="text-sm text-secondary-500">
             {<strong>{time}</strong>} ثانیه تا ارسال مجدد کد تایید
           </p>
         ) : (
-          <button className="p-1 text-primary-800" onClick={ResendOtpHandler}>
+          <button
+            className="p-1 text-sm text-primary-800"
+            onClick={ResendOtpHandler}
+          >
             ارسال مجدد کد تایید
           </button>
         )}
+
+        <button
+          className="p-1 text-sm text-primary-800"
+          onClick={() => setStep((s) => s - 1)}
+        >
+          ویرایش شماره
+        </button>
       </div>
     </div>
   );
