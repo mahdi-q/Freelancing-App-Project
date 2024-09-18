@@ -32,14 +32,29 @@ function CheckOTPForm({ setStep, phoneNumber, onResendOtp, otpResponse }) {
     try {
       const { message, user } = await mutateAsync({ phoneNumber, otp });
 
-      if (user.isActive) {
-        if (user.role === "OWNER") navigate("/owner");
-        if (user.role === "FREELANCER") navigate("/freelancer");
-      } else {
-        navigate("/complete-profile");
-      }
-
       toast.success(message);
+
+      if (!user.isActive) return navigate("/complete-profile");
+
+      if (user.isActive) {
+        if (user.status === 0) {
+          navigate("/");
+          toast("اطلاعات حساب کاربری شما رد شده است.");
+          return;
+        }
+
+        if (user.status === 1) {
+          navigate("/");
+          toast("اطلاعات حساب کاربری  شما در حال بررسی است.");
+          return;
+        }
+
+        if (user.status === 2) {
+          if (user.role === "OWNER") return navigate("/owner");
+
+          if (user.role === "FREELANCER") return navigate("/freelancer");
+        }
+      }
     } catch (error) {
       toast.error(error?.response?.data?.message);
     }
