@@ -41,6 +41,10 @@
     @apply w-full rounded-md border border-secondary-300 p-2 text-secondary-900 transition-all duration-300 hover:border-primary-500 focus:border-primary-500 focus:shadow-sm focus:shadow-primary-400;
   }
 
+  .radioField__input {
+    @apply form-radio h-4 w-4 cursor-pointer text-primary-800 transition-all duration-300 hover:text-primary-900 focus:ring-primary-800;
+  }
+
   .btn {
     @apply rounded-lg font-bold text-secondary-50 shadow-md transition-all duration-300;
   }
