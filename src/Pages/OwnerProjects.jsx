@@ -1,6 +1,6 @@
+import ProjectTable from "../Features/Project/ProjectTable";
+
 function OwnerProjects() {
-  return (
-    <div>Owner Projects Page</div>
-  )
+  return <ProjectTable />;
 }
-export default OwnerProjects
+export default OwnerProjects;
