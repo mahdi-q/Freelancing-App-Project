@@ -1,4 +1,4 @@
-import ProjectTable from "../Features/Project/ProjectTable";
+import ProjectTable from "../Features/Projects/ProjectTable";
 
 function OwnerProjects() {
   return <ProjectTable />;
