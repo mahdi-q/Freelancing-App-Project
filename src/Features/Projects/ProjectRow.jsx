@@ -6,10 +6,14 @@ import truncateText from "../../Utils/truncateText";
 import { HiOutlineTrash } from "react-icons/hi";
 import { useState } from "react";
 import Modal from "../../UI/Modal";
+import ConfirmDelete from "../../UI/ConfirmDelete";
+import useRemoveProject from "./useRemoveProject";
 
 function ProjectRow({ project, index }) {
   const [isEditOpen, setIsEditOpen] = useState(false);
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
+
+  const { isDeleting, removeProject } = useRemoveProject();
 
   return (
     <Table.Row>
@@ -69,7 +73,16 @@ function ProjectRow({ project, index }) {
               onClose={() => setIsDeleteOpen(false)}
               title={`حذف ${project.title}`}
             >
-              یک متن تستی ...
+              <ConfirmDelete
+                resourceName={project.title}
+                onClose={() => setIsDeleteOpen(false)}
+                onConfirm={() =>
+                  removeProject(project._id, {
+                    onSuccess: () => setIsDeleteOpen(false),
+                  })
+                }
+                disabled={isDeleting ? true : false}
+              />
             </Modal>
           </>
         </div>
