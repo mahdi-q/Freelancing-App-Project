@@ -1,6 +1,7 @@
 import { HiOutlinePlus } from "react-icons/hi";
 import Modal from "../../UI/Modal";
 import { useState } from "react";
+import CreateProjectForm from "./CreateProjectForm";
 
 function ProjectsHeader() {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,7 +24,7 @@ function ProjectsHeader() {
         open={isOpen}
         onClose={() => setIsOpen(false)}
       >
-        یک متن تستی ...
+        <CreateProjectForm />
       </Modal>
     </div>
   );
