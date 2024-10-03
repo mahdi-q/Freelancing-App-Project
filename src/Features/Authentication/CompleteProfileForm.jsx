@@ -1,32 +1,29 @@
-import { useState } from "react";
 import TextFieldInput from "../../UI/TextFieldInput";
-import RadioFieldInput from "../../UI/RadioFieldInput";
 import { useMutation } from "@tanstack/react-query";
 import { completeProfile } from "../../Services/authService";
 import toast from "react-hot-toast";
 import Loader from "../../UI/Loader";
 import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import RadioInputGroup from "../../UI/RadioInputGroup";
 
 function CompleteProfileForm() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [role, setRole] = useState("USER");
-
   const navigate = useNavigate();
+
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
 
   const { isPending, mutateAsync } = useMutation({
     mutationFn: completeProfile,
   });
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
+  const onSubmit = async (data) => {
     try {
-      const { user, message } = await mutateAsync({ name, email, role });
-
-      setName("");
-      setEmail("");
-      setRole("USER");
+      const { user, message } = await mutateAsync(data);
 
       toast.success(message);
 
@@ -55,41 +52,49 @@ function CompleteProfileForm() {
   return (
     <form
       className="mx-4 space-y-6 rounded-lg border border-secondary-300 px-3 py-6"
-      onSubmit={handleSubmit}
+      onSubmit={handleSubmit(onSubmit)}
     >
+      <h2 className="mb-8 text-center text-xl font-bold">تکمیل اطلاعات</h2>
+
       <TextFieldInput
         label="نام و نام خانوادگی"
         name="name"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
+        register={register}
+        validationSchema={{
+          required: "وارد کردن نام و نام خانوادگی ضروری می باشد",
+        }}
+        errors={errors}
       />
 
       <TextFieldInput
         label="ایمیل"
         name="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
+        register={register}
+        validationSchema={{
+          required: "وارد کردن ایمیل ضروری می باشد",
+          pattern: {
+            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+            message:"ایمیل وارد شده نامعتبر است"
+          },
+        }}
+        errors={errors}
       />
 
-      <div className="flex items-center justify-center gap-x-10">
-        <RadioFieldInput
-          label="کارفرما"
-          name="role"
-          id="OWNER"
-          value="OWNER"
-          onChange={(e) => setRole(e.target.value)}
-          checked={role === "OWNER"}
-        />
-
-        <RadioFieldInput
-          label="فریلنسر"
-          name="role"
-          id="FREELANCER"
-          value="FREELANCER"
-          onChange={(e) => setRole(e.target.value)}
-          checked={role === "FREELANCER"}
-        />
-      </div>
+      <RadioInputGroup
+        register={register}
+        watch={watch}
+        errors={errors}
+        configs={{
+          name: "role",
+          validationSchema: {
+            required: "انتخاب یک نقش ضروری می باشد",
+          },
+          options: [
+            { label: "کارفرما", value: "OWNER" },
+            { label: "فریلنسر", value: "FREELANCER" },
+          ],
+        }}
+      />
 
       {isPending ? (
         <Loader />

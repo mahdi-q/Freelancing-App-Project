@@ -68,6 +68,8 @@ function CheckOTPForm({ setStep, phoneNumber, onResendOtp, otpResponse }) {
 
   return (
     <div className="mx-4 space-y-3 rounded-lg border border-secondary-300 px-3 py-6">
+      <h2 className="text-center text-xl mb-8 font-bold ">تایید شماره موبایل</h2>
+
       <form className="space-y-6" onSubmit={checkOtpHandler}>
         {otpResponse ? (
           <p className="mb-2 mr-2 text-secondary-600">{otpResponse?.message}</p>
