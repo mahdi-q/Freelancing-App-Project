@@ -6,10 +6,13 @@ import { useState } from "react";
 import DatePickerField from "../../UI/DatePickerField";
 import persian from "react-date-object/calendars/persian";
 import persian_fa from "react-date-object/locales/persian_fa";
+import useCategories from "../../Hooks/useCategories";
 
 function CreateProjectForm() {
   const [tags, setTags] = useState([]);
   const [deadline, setDeadline] = useState(new Date());
+
+  const { categories } = useCategories();
 
   const {
     register,
@@ -68,7 +71,7 @@ function CreateProjectForm() {
       <RHFSelectOption
         label="دسته بندی"
         name="category"
-        options={[]}
+        options={categories}
         register={register}
         required
         validationSchema={{
