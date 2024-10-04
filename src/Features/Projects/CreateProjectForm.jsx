@@ -9,33 +9,69 @@ import persian_fa from "react-date-object/locales/persian_fa";
 import useCategories from "../../Hooks/useCategories";
 import useCreateProject from "./useCreateProject";
 import Loader from "../../UI/Loader";
+import useEditProject from "./useEditProject";
 
-function CreateProjectForm({ onClose }) {
-  const [tags, setTags] = useState([]);
-  const [date, setDate] = useState(new Date());
+function CreateProjectForm({ onClose, projectToEdit = {} }) {
+  const editId = projectToEdit._id;
+  const isEditSession = Boolean(editId);
+
+  const {
+    title,
+    description,
+    budget,
+    category,
+    tags: prevTags,
+    deadline,
+  } = projectToEdit;
+
+  let editValues = {};
+  if (isEditSession) {
+    editValues = {
+      title,
+      description,
+      budget,
+      category: category._id,
+    };
+  }
+
+  const newDate = new Date();
+
+  const [tags, setTags] = useState(prevTags || []);
+  const [date, setDate] = useState(new Date(deadline || newDate));
 
   const { categories } = useCategories();
 
   const { isCreating, createProject } = useCreateProject();
+  const { isEditing, editProject } = useEditProject();
 
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm();
+  } = useForm({ defaultValues: editValues });
 
   const onSubmit = (data) => {
     const deadline = new Date(date).toISOString();
-
     const newProject = { ...data, tags, deadline };
 
-    createProject(newProject, {
-      onSuccess: () => {
-        onClose();
-        reset();
-      },
-    });
+    if (isEditSession) {
+      editProject(
+        { id: editId, newProject },
+        {
+          onSuccess: () => {
+            onClose(), reset();
+          },
+        },
+      );
+    } else {
+      createProject(newProject, {
+        onSuccess: () => {
+          onClose();
+          reset();
+        },
+      });
+    }
   };
 
   return (
@@ -111,10 +147,10 @@ function CreateProjectForm({ onClose }) {
         format="YYYY/MM/DD"
       />
 
-      {isCreating ? (
+      {isCreating || isEditing ? (
         <Loader />
       ) : (
-        <button type="submit" className="btn btn--primary w-full !mb-4">
+        <button type="submit" className="btn btn--primary !mb-4 w-full">
           تایید
         </button>
       )}

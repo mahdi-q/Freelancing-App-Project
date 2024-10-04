@@ -8,6 +8,7 @@ import { useState } from "react";
 import Modal from "../../UI/Modal";
 import ConfirmDelete from "../../UI/ConfirmDelete";
 import useRemoveProject from "./useRemoveProject";
+import CreateProjectForm from "../Projects/CreateProjectForm";
 
 function ProjectRow({ project, index }) {
   const [isEditOpen, setIsEditOpen] = useState(false);
@@ -59,7 +60,10 @@ function ProjectRow({ project, index }) {
               onClose={() => setIsEditOpen(false)}
               title={`ویرایش ${project.title}`}
             >
-              یک متن تستی ...
+              <CreateProjectForm
+                onClose={() => setIsEditOpen(false)}
+                projectToEdit={project}
+              />
             </Modal>
           </>
 
