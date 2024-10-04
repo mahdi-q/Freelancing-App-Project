@@ -7,21 +7,35 @@ import DatePickerField from "../../UI/DatePickerField";
 import persian from "react-date-object/calendars/persian";
 import persian_fa from "react-date-object/locales/persian_fa";
 import useCategories from "../../Hooks/useCategories";
+import useCreateProject from "./useCreateProject";
+import Loader from "../../UI/Loader";
 
-function CreateProjectForm() {
+function CreateProjectForm({ onClose }) {
   const [tags, setTags] = useState([]);
-  const [deadline, setDeadline] = useState(new Date());
+  const [date, setDate] = useState(new Date());
 
   const { categories } = useCategories();
+
+  const { isCreating, createProject } = useCreateProject();
 
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
+    const deadline = new Date(date).toISOString();
+
+    const newProject = { ...data, tags, deadline };
+
+    createProject(newProject, {
+      onSuccess: () => {
+        onClose();
+        reset();
+      },
+    });
   };
 
   return (
@@ -90,16 +104,20 @@ function CreateProjectForm() {
       <DatePickerField
         label="ددلاین"
         name="deadline"
-        date={deadline}
-        setDate={setDeadline}
+        date={date}
+        setDate={setDate}
         calender={persian}
         locale={persian_fa}
         format="YYYY/MM/DD"
       />
 
-      <button type="submit" className="btn btn--primary w-full">
-        تایید
-      </button>
+      {isCreating ? (
+        <Loader />
+      ) : (
+        <button type="submit" className="btn btn--primary w-full !mb-4">
+          تایید
+        </button>
+      )}
     </form>
   );
 }

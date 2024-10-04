@@ -190,3 +190,38 @@ table td {
   background-color: rgb(var(--color-secondary-500));
   color: rgb(var(--color-secondary-100));
 }
+
+/* Scroll Bar */
+
+/* For webkit browsers (chrome , safari) */
+@supports (-webkit-appearance: none) {
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: rgb(var(--color-primary-800));
+    border-radius: 50px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: rgb(var(--color-secondary-300));
+    border-radius: 50px;
+  }
+}
+
+/* For Firefox browser */
+@-moz-document url-prefix() {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(var(--color-primary-800))
+      rgb(var(--color-secondary-300));
+  }
+}
+
+/* smooth scrolling */
+html,
+body {
+  scroll-behavior: smooth;
+}

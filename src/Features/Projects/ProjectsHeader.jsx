@@ -24,7 +24,7 @@ function ProjectsHeader() {
         open={isOpen}
         onClose={() => setIsOpen(false)}
       >
-        <CreateProjectForm />
+        <CreateProjectForm onClose={() => setIsOpen(false)} />
       </Modal>
     </div>
   );
