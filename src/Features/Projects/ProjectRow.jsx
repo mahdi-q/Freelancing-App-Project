@@ -9,6 +9,7 @@ import Modal from "../../UI/Modal";
 import ConfirmDelete from "../../UI/ConfirmDelete";
 import useRemoveProject from "./useRemoveProject";
 import CreateProjectForm from "../Projects/CreateProjectForm";
+import ToggleProjectStatus from "./ToggleProjectStatus";
 
 function ProjectRow({ project, index }) {
   const [isEditOpen, setIsEditOpen] = useState(false);
@@ -41,11 +42,7 @@ function ProjectRow({ project, index }) {
       <td>{project.freelancer?.name || "-"}</td>
 
       <td>
-        {project.status === "OPEN" ? (
-          <span className="badge badge--success">باز</span>
-        ) : (
-          <span className="badge badge--danger">بسته</span>
-        )}
+        <ToggleProjectStatus project={project} />
       </td>
 
       <td>
