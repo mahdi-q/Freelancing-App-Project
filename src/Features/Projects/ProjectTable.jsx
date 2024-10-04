@@ -23,6 +23,7 @@ function ProjectTable() {
         <th>فریلنسر</th>
         <th>وضعیت</th>
         <th>عملیات</th>
+        <th>درخواست ها</th>
       </Table.Header>
 
       <Table.Body>
