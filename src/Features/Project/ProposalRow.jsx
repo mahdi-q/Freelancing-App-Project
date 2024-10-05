@@ -1,5 +1,9 @@
 import Table from "../../UI/Table";
 import truncateText from "../../Utils/truncateText";
+import { TbStatusChange } from "react-icons/tb";
+import Modal from "../../UI/Modal";
+import { useState } from "react";
+import ChangeProposalStatus from "./ChangeProposalStatus";
 import {
   toPersianNumbers,
   toPersianNumbersWithComma,
@@ -23,6 +27,8 @@ const statusStyle = [
 function ProposalRow({ proposal, index }) {
   const { user, description, duration, price, status } = proposal;
 
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <Table.Row>
       <td>{index + 1}</td>
@@ -41,7 +47,22 @@ function ProposalRow({ proposal, index }) {
         </span>
       </td>
 
-      <td>...</td>
+      <td>
+        <button onClick={() => setIsOpen(true)}>
+          <TbStatusChange className="h-5 w-5 text-primary-900" />
+        </button>
+
+        <Modal
+          title="تغییر وضعیت درخواست"
+          open={isOpen}
+          onClose={() => setIsOpen(false)}
+        >
+          <ChangeProposalStatus
+            proposal={proposal}
+            onClose={() => setIsOpen(false)}
+          />
+        </Modal>
+      </td>
     </Table.Row>
   );
 }
