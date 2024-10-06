@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 function Sidebar() {
   return (
-    <div className="row-span-2 row-start-1 bg-secondary-0 p-4">
+    <div className="row-span-2 row-start-1 bg-secondary-0 p-4 border-l border-secondary-300">
       <ul className="flex flex-col gap-y-4">
         <li>
           <CustomNavlink to="/owner/dashboard">
