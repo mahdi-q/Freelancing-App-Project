@@ -1,8 +1,12 @@
 @import url("/fonts.css");
 
+/* Tailwind Configs */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Root Variables */
 
 @layer base {
   :root {
@@ -36,11 +40,12 @@
   }
 }
 
+/* Classes */
+
 @layer components {
   .textField__input {
     @apply w-full rounded-md border border-secondary-300 p-2 text-secondary-900 transition-all duration-300 hover:border-primary-500 focus:border-primary-500 focus:shadow-sm focus:shadow-primary-400;
   }
-
   .radioField__input {
     @apply form-radio h-4 w-4 cursor-pointer text-primary-800 transition-all duration-300 hover:text-primary-900 focus:ring-primary-800;
   }
@@ -48,15 +53,37 @@
   .btn {
     @apply rounded-lg font-bold text-secondary-50 shadow-md transition-all duration-300;
   }
-
   .btn--primary {
     @apply bg-primary-900 p-3 shadow-primary-500 hover:bg-primary-800;
   }
-
   .btn--secondary {
     @apply bg-secondary-600 p-2 shadow-secondary-300 hover:bg-secondary-500;
   }
+  .btn--outline {
+    @apply border border-secondary-700 text-secondary-700;
+  }
+  .btn--danger {
+    @apply border border-rose-700 text-rose-700;
+  }
+
+  .badge {
+    @apply inline-block whitespace-nowrap rounded-xl px-2 py-0.5;
+  }
+  .badge--primary {
+    @apply bg-primary-900 text-white;
+  }
+  .badge--secondary {
+    @apply bg-secondary-200 text-secondary-600;
+  }
+  .badge--success {
+    @apply bg-green-500 text-white;
+  }
+  .badge--danger {
+    @apply bg-red-500 text-white;
+  }
 }
+
+/* Reset Styles */
 
 *,
 *::after,
@@ -87,4 +114,114 @@ button:disabled {
 
 label {
   display: block;
+}
+
+/* Inupt Number */
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type="number"] {
+  -moz-appearance: textfield; /* Firefox */
+}
+
+/* Table */
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+
+table .title-row {
+  background-color: rgb(var(--color-secondary-100));
+}
+
+table td,
+table th {
+  border-bottom: 1px solid rgb(var(--color-secondary-200));
+  text-align: center;
+  white-space: nowrap;
+}
+
+table th {
+  padding: 0.6rem 1rem;
+  color: rgb(var(--color-secondary-600));
+  font-size: 0.9rem;
+}
+
+table td {
+  font-size: 0.85rem;
+  padding: 1rem 1rem;
+  color: rgb(var(--color-secondary-600));
+}
+
+/* React Tag Input */
+
+.rti--container {
+  background-color: rgb(var(--color-secondary-0));
+  border: 1px solid rgb(var(--color-secondary-300));
+  color: rgb(var(--color-secondary-900));
+  transition: all ease-in-out 3ms;
+  --rti-radius: 0.375rem;
+  --rti-s: 0.5rem;
+  --rti-tag: #edf2f7;
+  --rti-tag-remove: #e53e3e;
+}
+
+.rti--container:hover {
+  border: 1px solid rgb(var(--color-primary-500));
+}
+
+.rti--container .rti--input {
+  background-color: rgb(var(--color-secondary-200));
+  color: rgb(var(--color-secondary-800));
+  padding: 0.3rem 1rem;
+  border-radius: 0.5rem;
+}
+
+.rti--container .rti--tag {
+  padding: 0.3rem 0.5rem 0.1rem 0.2rem;
+  border-radius: 0.5rem;
+  background-color: rgb(var(--color-secondary-500));
+  color: rgb(var(--color-secondary-100));
+}
+
+/* Scroll Bar */
+
+/* For webkit browsers (chrome , safari) */
+@supports (-webkit-appearance: none) {
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: rgb(var(--color-primary-800));
+    border-radius: 50px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: rgb(var(--color-secondary-300));
+    border-radius: 50px;
+  }
+}
+
+/* For Firefox browser */
+@-moz-document url-prefix() {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(var(--color-primary-800))
+      rgb(var(--color-secondary-300));
+  }
+}
+
+/* smooth scrolling */
+html,
+body {
+  scroll-behavior: smooth;
 }
