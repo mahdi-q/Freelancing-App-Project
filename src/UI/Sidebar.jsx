@@ -32,8 +32,8 @@ function CustomNavlink({ children, to }) {
       to={to}
       className={({ isActive }) =>
         isActive
-          ? `${navLinkClass} bg-primary-100/50 text-primary-900`
-          : `${navLinkClass} bg-secondary-100 text-secondary-600 hover:bg-primary-100/50 hover:text-primary-900`
+          ? `${navLinkClass} bg-primary-100/80 text-primary-900`
+          : `${navLinkClass} bg-secondary-100 text-secondary-600 hover:bg-primary-100/80 hover:text-primary-900`
       }
     >
       {children}

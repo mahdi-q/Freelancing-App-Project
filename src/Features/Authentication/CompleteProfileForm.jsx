@@ -54,7 +54,9 @@ function CompleteProfileForm() {
       className="mx-4 space-y-6 rounded-lg border border-secondary-300 px-3 py-6"
       onSubmit={handleSubmit(onSubmit)}
     >
-      <h2 className="mb-8 text-center text-xl font-bold">تکمیل اطلاعات</h2>
+      <h2 className="mb-8 text-center text-xl font-bold text-secondary-900">
+        تکمیل اطلاعات
+      </h2>
 
       <TextFieldInput
         label="نام و نام خانوادگی"
@@ -74,7 +76,7 @@ function CompleteProfileForm() {
           required: "وارد کردن ایمیل ضروری می باشد",
           pattern: {
             value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-            message:"ایمیل وارد شده نامعتبر است"
+            message: "ایمیل وارد شده نامعتبر است",
           },
         }}
         errors={errors}

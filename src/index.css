@@ -41,6 +41,7 @@
       --color-red-300: 252, 165, 165;
     }
     &.dark-mode {
+      --background-app-rgb: 24, 33, 47;
       --color-secondary-900: 249, 250, 251;
       --color-secondary-800: 243, 244, 246;
       --color-secondary-700: 229, 231, 235;
@@ -61,14 +62,14 @@
 
 @layer components {
   .textField__input {
-    @apply w-full rounded-md border border-secondary-300 p-2 text-secondary-900 transition-all duration-300 hover:border-primary-500 focus:border-primary-500 focus:shadow-sm focus:shadow-primary-400;
+    @apply w-full rounded-md border border-secondary-300 bg-secondary-0 p-2 text-secondary-900 transition-all duration-300 hover:border-primary-500 focus:border-primary-500 focus:shadow-sm focus:shadow-primary-400;
   }
   .radioField__input {
     @apply form-radio h-4 w-4 cursor-pointer text-primary-800 transition-all duration-300 hover:text-primary-900 focus:ring-primary-800;
   }
 
   .btn {
-    @apply rounded-lg font-bold text-secondary-50 shadow-md transition-all duration-300;
+    @apply rounded-lg font-bold text-secondary-50 shadow-md transition-all duration-300 dark:shadow-none;
   }
   .btn--primary {
     @apply bg-primary-900 p-3 shadow-primary-500 hover:bg-primary-800;

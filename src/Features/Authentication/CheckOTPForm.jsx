@@ -68,7 +68,9 @@ function CheckOTPForm({ setStep, phoneNumber, onResendOtp, otpResponse }) {
 
   return (
     <div className="mx-4 space-y-3 rounded-lg border border-secondary-300 px-3 py-6">
-      <h2 className="text-center text-xl mb-8 font-bold ">تایید شماره موبایل</h2>
+      <h2 className="mb-8 text-center text-xl font-bold text-secondary-900">
+        تایید شماره موبایل
+      </h2>
 
       <form className="space-y-6" onSubmit={checkOtpHandler}>
         {otpResponse ? (
@@ -83,7 +85,7 @@ function CheckOTPForm({ setStep, phoneNumber, onResendOtp, otpResponse }) {
           value={otp}
           onChange={setOtp}
           numInputs={6}
-          renderSeparator={<span>-</span>}
+          renderSeparator={<span className="text-secondary-500">-</span>}
           renderInput={(props) => <input {...props} />}
           containerStyle={{
             display: "flex",
@@ -92,6 +94,8 @@ function CheckOTPForm({ setStep, phoneNumber, onResendOtp, otpResponse }) {
             gap: "8px",
           }}
           inputStyle={{
+            backgroundColor: "rgb(var(--color-secondary-0))",
+            color: "rgb(var(--color-secondary-900))",
             border: "1px solid rgb(var(--color-secondary-400))",
             borderRadius: "3px",
             width: "1.8rem",
