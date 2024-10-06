@@ -9,29 +9,32 @@ import AppLayout from "./UI/AppLayout";
 import OwnerDashboard from "./Pages/OwnerDashboard";
 import OwnerProjects from "./Pages/OwnerProjects";
 import OwnerProject from "./Pages/OwnerProject";
+import { DarkModeProvider } from "./Contexts/DarkModeContext";
 
 const queryClient = new QueryClient();
 
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <Toaster />
+    <DarkModeProvider>
+      <QueryClientProvider client={queryClient}>
+        <Toaster />
 
-      <Routes>
-        <Route path="/auth" element={<Auth />} />
-        <Route path="/complete-profile" element={<CompleteProfile />} />
+        <Routes>
+          <Route path="/auth" element={<Auth />} />
+          <Route path="/complete-profile" element={<CompleteProfile />} />
 
-        <Route path="/owner" element={<AppLayout />}>
-          <Route index element={<Navigate to="dashboard" replace/>} />
-          <Route path="dashboard" element={<OwnerDashboard />} />
-          <Route path="projects" element={<OwnerProjects />} />
-          <Route path="projects/:id" element={<OwnerProject />} />
-        </Route>
+          <Route path="/owner" element={<AppLayout />}>
+            <Route index element={<Navigate to="dashboard" replace />} />
+            <Route path="dashboard" element={<OwnerDashboard />} />
+            <Route path="projects" element={<OwnerProjects />} />
+            <Route path="projects/:id" element={<OwnerProject />} />
+          </Route>
 
-        <Route path="/" element={<Home />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </QueryClientProvider>
+          <Route path="/" element={<Home />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </QueryClientProvider>
+    </DarkModeProvider>
   );
 }
 
