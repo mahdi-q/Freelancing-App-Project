@@ -15,7 +15,7 @@ function RHFSelectOption({
 
       <select
         {...register(name, validationSchema)}
-        className="w-full rounded-md border-l-8 border-l-transparent p-2 text-secondary-900 outline outline-1 outline-secondary-300 transition-all duration-300 hover:outline-primary-500 focus:outline-primary-500"
+        className="w-full rounded-md border-l-8 border-l-transparent bg-secondary-0 p-2 text-secondary-900 outline outline-1 outline-secondary-300 transition-all duration-300 hover:outline-primary-500 focus:outline-primary-500"
         name={name}
         id={name}
       >

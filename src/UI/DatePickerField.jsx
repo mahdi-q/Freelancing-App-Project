@@ -1,4 +1,5 @@
 import DatePicker from "react-multi-date-picker";
+import "react-multi-date-picker/styles/backgrounds/bg-dark.css";
 
 function DatePickerField({
   label,
@@ -9,6 +10,8 @@ function DatePickerField({
   locale,
   format,
 }) {
+  const isDarkMode = JSON.parse(localStorage.getItem("isDarkMode"));
+
   return (
     <div>
       <label htmlFor={name} className="mb-2 text-secondary-600">
@@ -26,6 +29,7 @@ function DatePickerField({
         containerClassName="w-full"
         inputClass="textField__input"
         calendarPosition="top-center"
+        className={isDarkMode ? "bg-dark" : ""}
       />
     </div>
   );

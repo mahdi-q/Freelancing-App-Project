@@ -7,7 +7,9 @@ function SendOTPForm({ onSendOtp, isSendingOtp, register, errors }) {
       className="mx-4 space-y-6 rounded-lg border border-secondary-300 px-3 py-6"
       onSubmit={onSendOtp}
     >
-      <h2 className="text-center text-lg font-bold">سلام! خوش آمدید</h2>
+      <h2 className="text-center text-lg font-bold text-secondary-900">
+        سلام! خوش آمدید
+      </h2>
 
       <TextFieldInput
         label={"لطفا شماره موبایل خود را وارد کنید"}
