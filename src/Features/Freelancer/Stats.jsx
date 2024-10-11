@@ -1,4 +1,4 @@
-import { HiCollection, HiCurrencyDollar, HiViewGrid } from "react-icons/hi";
+import { HiCheck, HiCollection, HiCurrencyDollar } from "react-icons/hi";
 import Stat from "../../UI/Stat";
 import { toPersianNumbersWithComma } from "../../Utils/toPersianNumbers";
 
@@ -14,24 +14,24 @@ function Stats({ proposals }) {
   return (
     <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 xl:grid-cols-3">
       <Stat
-        icon={<HiViewGrid className="h-16 w-16" />}
+        icon={<HiCollection className="h-16 w-16" />}
         title="درخواست ها"
         value={numOfProposals}
-        color="primary"
+        color="yellow"
       />
 
       <Stat
-        icon={<HiCurrencyDollar className="h-16 w-16" />}
+        icon={<HiCheck className="h-16 w-16" />}
         title="درخواست های تایید شده"
         value={acceptedProposals.length}
         color="green"
       />
 
       <Stat
-        icon={<HiCollection className="h-16 w-16" />}
+        icon={<HiCurrencyDollar className="h-16 w-16" />}
         title="کیف پول"
         value={toPersianNumbersWithComma(balance)}
-        color="yellow"
+        color="primary"
       />
     </div>
   );
