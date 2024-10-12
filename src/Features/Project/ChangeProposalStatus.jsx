@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import RHFSelectOption from "../../UI/RHFSelectOption";
 import useChangeProposalStatus from "./useChangeProposalStatus";
 import Loader from "../../UI/Loader";
+import { useParams } from "react-router-dom";
 
 const options = [
   {
@@ -19,17 +20,22 @@ const options = [
 ];
 
 function ChangeProposalStatus({ proposal, onClose }) {
+  const { _id: proposalId, status } = proposal;
+
   const { register, handleSubmit } = useForm({
-    defaultValues: { status: proposal.status },
+    defaultValues: { status },
   });
 
   const { isUpdating, changeProposalStatus } = useChangeProposalStatus();
 
+  const { id: projectId } = useParams();
+
   const onSubmit = (data) => {
     changeProposalStatus(
       {
-        id: proposal._id,
-        data,
+        proposalId,
+        projectId,
+        ...data,
       },
       {
         onSuccess: () => {
