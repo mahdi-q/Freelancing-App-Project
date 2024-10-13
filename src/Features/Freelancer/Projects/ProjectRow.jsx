@@ -12,7 +12,7 @@ const statusStyle = {
     label: "باز",
     className: "badge--success",
   },
-  CLOSE: {
+  CLOSED: {
     label: "بسته",
     className: "badge--danger",
   },

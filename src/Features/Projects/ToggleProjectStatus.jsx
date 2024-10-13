@@ -8,7 +8,7 @@ function ToggleProjectStatus({ project }) {
   const { isUpdating, toggleProjectStatus } = useToggleProjectStatus();
 
   const toggleHandler = () => {
-    const newStatus = status === "OPEN" ? "CLOSE" : "OPEN";
+    const newStatus = status === "OPEN" ? "CLOSED" : "OPEN";
 
     toggleProjectStatus({
       id: project._id,
