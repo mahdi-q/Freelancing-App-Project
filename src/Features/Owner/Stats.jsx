@@ -1,4 +1,4 @@
-import { HiCollection, HiCurrencyDollar, HiViewGrid } from "react-icons/hi";
+import { HiCheck, HiCollection, HiViewGrid } from "react-icons/hi";
 import Stat from "../../UI/Stat";
 
 function Stats({ projects }) {
@@ -23,7 +23,7 @@ function Stats({ projects }) {
       />
 
       <Stat
-        icon={<HiCurrencyDollar className="h-16 w-16" />}
+        icon={<HiCheck className="h-16 w-16" />}
         title="پروژه های تایید شده"
         value={numOfAcceptedProjects}
         color="green"
