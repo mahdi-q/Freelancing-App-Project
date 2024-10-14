@@ -15,6 +15,8 @@ import FreelancerDashboard from "./Pages/FreelancerDashboard";
 import SubmittedProjects from "./Pages/SubmittedProjects";
 import FreelancerProposals from "./Pages/FreelancerProposals";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import ProtectedRoute from "./UI/ProtectedRoute";
+import NotAccess from "./Pages/NotAccess";
 
 const queryClient = new QueryClient();
 
@@ -30,14 +32,28 @@ function App() {
           <Route path="/auth" element={<Auth />} />
           <Route path="/complete-profile" element={<CompleteProfile />} />
 
-          <Route path="/owner" element={<OwnerLayout />}>
+          <Route
+            path="/owner"
+            element={
+              <ProtectedRoute>
+                <OwnerLayout />
+              </ProtectedRoute>
+            }
+          >
             <Route index element={<Navigate to="dashboard" replace />} />
             <Route path="dashboard" element={<OwnerDashboard />} />
             <Route path="projects" element={<OwnerProjects />} />
             <Route path="projects/:id" element={<OwnerProject />} />
           </Route>
 
-          <Route path="/freelancer" element={<FreelancerLayout />}>
+          <Route
+            path="/freelancer"
+            element={
+              <ProtectedRoute>
+                <FreelancerLayout />
+              </ProtectedRoute>
+            }
+          >
             <Route index element={<Navigate to="dashboard" replace />} />
             <Route path="dashboard" element={<FreelancerDashboard />} />
             <Route path="projects" element={<SubmittedProjects />} />
@@ -46,6 +62,7 @@ function App() {
 
           <Route path="/" element={<Home />} />
           <Route path="*" element={<NotFound />} />
+          <Route path="/not-access" element={<NotAccess />} />
         </Routes>
       </QueryClientProvider>
     </DarkModeProvider>
