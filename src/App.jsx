@@ -17,6 +17,11 @@ import FreelancerProposals from "./Pages/FreelancerProposals";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import ProtectedRoute from "./UI/ProtectedRoute";
 import NotAccess from "./Pages/NotAccess";
+import AdminLayout from "./Features/Admin/AdminLayout";
+import AdminDashboard from "./Pages/AdminDashboard";
+import Users from "./Pages/Users";
+import Projects from "./Pages/Projects";
+import Proposals from "./Pages/Proposals";
 
 const queryClient = new QueryClient();
 
@@ -25,7 +30,7 @@ function App() {
     <DarkModeProvider>
       <QueryClientProvider client={queryClient}>
         <ReactQueryDevtools initialIsOpen={false} />
-        
+
         <Toaster />
 
         <Routes>
@@ -58,6 +63,21 @@ function App() {
             <Route path="dashboard" element={<FreelancerDashboard />} />
             <Route path="projects" element={<SubmittedProjects />} />
             <Route path="proposals" element={<FreelancerProposals />} />
+          </Route>
+
+          <Route
+            path="/admin"
+            element={
+              <ProtectedRoute>
+                <AdminLayout />
+              </ProtectedRoute>
+            }
+          >
+            <Route index element={<Navigate to="dashboard" replace />} />
+            <Route path="dashboard" element={<AdminDashboard />} />
+            <Route path="users" element={<Users />} />
+            <Route path="projects" element={<Projects />} />
+            <Route path="proposals" element={<Proposals />} />
           </Route>
 
           <Route path="/" element={<Home />} />
