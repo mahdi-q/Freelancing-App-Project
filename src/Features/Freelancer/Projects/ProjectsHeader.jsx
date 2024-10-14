@@ -25,12 +25,12 @@ function ProjectsHeader() {
           filterField="sort"
           options={[
             {
-              label: "جدید ترین",
-              value: "latest",
-            },
-            {
               label: "قدیمی ترین",
               value: "earliest",
+            },
+            {
+              label: "جدید ترین",
+              value: "latest",
             },
           ]}
         />
