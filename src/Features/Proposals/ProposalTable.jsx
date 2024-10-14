@@ -1,8 +1,8 @@
+import useProposals from "../../Hooks/useProposals";
 import Empty from "../../UI/Empty";
 import Loader from "../../UI/Loader";
 import Table from "../../UI/Table";
 import ProposalRow from "./ProposalRow";
-import useProposals from "./useProposals";
 
 function ProposalTable() {
   const { isLoading, proposals } = useProposals();
