@@ -1,6 +1,13 @@
+import ProjectsHeader from "../Features/Admin/Project/ProjectsHeader"
+import ProjectsTable from "../Features/Admin/Project/ProjectsTable"
+
 function Projects() {
   return (
-    <div>Projects</div>
+    <div>
+      <ProjectsHeader/>
+
+      <ProjectsTable/>
+    </div>
   )
 }
 export default Projects
