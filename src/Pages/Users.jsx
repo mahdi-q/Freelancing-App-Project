@@ -1,12 +1,13 @@
+import UsersHeader from "../Features/Admin/User/UsersHeader";
 import UsersTable from "../Features/Admin/User/UsersTable";
 
 function Users() {
   return (
     <div>
-      <h1 className="mb-8 text-xl font-black text-secondary-700">لیست کاربران</h1>
+      <UsersHeader />
 
-      <UsersTable/>
+      <UsersTable />
     </div>
   );
 }
-export default Users
+export default Users;
