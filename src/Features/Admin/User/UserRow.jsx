@@ -1,5 +1,9 @@
+import { useState } from "react";
+import Modal from "../../../UI/Modal";
 import Table from "../../../UI/Table";
 import { toPersianNumbers } from "../../../Utils/toPersianNumbers";
+import { TbStatusChange } from "react-icons/tb";
+import ChangeUserStatus from "./ChangeUserStatus";
 
 const statusStyle = [
   {
@@ -25,6 +29,8 @@ const roles = {
 function UserRow({ user, index }) {
   const { name, email, phoneNumber, role, status } = user;
 
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <Table.Row>
       <td>{index + 1}</td>
@@ -43,7 +49,19 @@ function UserRow({ user, index }) {
         </span>
       </td>
 
-      <td>...</td>
+      <td>
+        <button onClick={() => setIsOpen(true)}>
+          <TbStatusChange className="h-5 w-5 text-primary-900" />
+        </button>
+
+        <Modal
+          title="تغییر وضعیت کاربر"
+          open={isOpen}
+          onClose={() => setIsOpen(false)}
+        >
+          <ChangeUserStatus user={user} onClose={() => setIsOpen(false)} />
+        </Modal>
+      </td>
     </Table.Row>
   );
 }
