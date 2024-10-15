@@ -6,8 +6,8 @@ export function changeProposalStatusApi({ proposalId, ...data }) {
     .then(({ data }) => data.data);
 }
 
-export function getProposalsApi() {
-  return http.get("/proposal/list").then(({ data }) => data.data);
+export function getProposalsApi(qs) {
+  return http.get(`/proposal/list${qs}`).then(({ data }) => data.data);
 }
 
 export function createProposalApi(data) {
