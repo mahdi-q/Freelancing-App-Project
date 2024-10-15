@@ -6,9 +6,17 @@ import Loader from "../../UI/Loader";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import RadioInputGroup from "../../UI/RadioInputGroup";
+import useUser from "./useUser";
+import { useEffect } from "react";
 
 function CompleteProfileForm() {
   const navigate = useNavigate();
+
+  const { user } = useUser();
+
+  useEffect(() => {
+    if (user) navigate("/", { replace: true });
+  }, [user, navigate]);
 
   const {
     register,
