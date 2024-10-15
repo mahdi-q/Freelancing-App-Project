@@ -3,6 +3,7 @@ import AppLayout from "../../UI/AppLayout";
 import CustomNavlink from "../../UI/CustomNavlink";
 import Sidebar from "../../UI/Sidebar";
 import { AiFillProduct } from "react-icons/ai";
+import { BiSolidCategoryAlt } from "react-icons/bi";
 
 function AdminLayout() {
   return (
@@ -26,6 +27,11 @@ function AdminLayout() {
         <CustomNavlink to="proposals">
           <AiFillProduct />
           <span>درخواست ها</span>
+        </CustomNavlink>
+
+        <CustomNavlink to="categories">
+          <BiSolidCategoryAlt />
+          <span>دسته بندی ها</span>
         </CustomNavlink>
       </Sidebar>
     </AppLayout>

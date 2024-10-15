@@ -22,6 +22,7 @@ import AdminDashboard from "./Pages/AdminDashboard";
 import Users from "./Pages/Users";
 import Projects from "./Pages/Projects";
 import Proposals from "./Pages/Proposals";
+import Categories from "./Pages/Categories";
 
 const queryClient = new QueryClient();
 
@@ -78,6 +79,7 @@ function App() {
             <Route path="users" element={<Users />} />
             <Route path="projects" element={<Projects />} />
             <Route path="proposals" element={<Proposals />} />
+            <Route path="categories" element={<Categories />} />
           </Route>
 
           <Route path="/" element={<Home />} />
