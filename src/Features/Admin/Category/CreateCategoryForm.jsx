@@ -2,26 +2,55 @@ import { useForm } from "react-hook-form";
 import TextFieldInput from "../../../UI/TextFieldInput";
 import Loader from "../../../UI/Loader";
 import useCreateCategory from "./useCreateCategory";
+import useEditCategory from "./useEditCategory";
 
-function CreateCategoryForm({ onClose }) {
+function CreateCategoryForm({ onClose, categoryToEdit = {} }) {
+  const editId = categoryToEdit._id;
+  const isEditSession = Boolean(editId);
+
+  const { title, description, englishTitle, type } = categoryToEdit;
+
+  let editValues = {};
+  if (isEditSession) {
+    editValues = {
+      title,
+      description,
+      englishTitle,
+      type,
+    };
+  }
+
   const { isCreating, createCategory } = useCreateCategory();
+  const { isEditing, editCategory } = useEditCategory();
 
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm();
+  } = useForm({ defaultValues: editValues });
 
   const onSubmit = (data) => {
     const newCategory = { ...data };
 
-    createCategory(newCategory, {
-      onSuccess: () => {
-        onClose();
-        reset();
-      },
-    });
+    if (isEditSession) {
+      editCategory(
+        { id: editId, newCategory },
+        {
+          onSuccess: () => {
+            onClose();
+            reset();
+          },
+        },
+      );
+    } else {
+      createCategory(newCategory, {
+        onSuccess: () => {
+          onClose();
+          reset();
+        },
+      });
+    }
   };
 
   return (
@@ -78,7 +107,7 @@ function CreateCategoryForm({ onClose }) {
         errors={errors}
       />
 
-      {isCreating ? (
+      {isCreating || isEditing ? (
         <Loader />
       ) : (
         <button type="submit" className="btn btn--primary !mb-4 w-full">

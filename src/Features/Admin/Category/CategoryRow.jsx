@@ -2,12 +2,17 @@ import { useState } from "react";
 import Table from "../../../UI/Table";
 import Modal from "../../../UI/Modal";
 import { TbPencilMinus } from "react-icons/tb";
+import CreateCategoryForm from "./CreateCategoryForm";
 import { HiOutlineTrash } from "react-icons/hi";
 import truncateText from "../../../Utils/truncateText";
+import ConfirmDelete from "../../../UI/ConfirmDelete";
+import useRemoveCategory from "./useRemoveCategory";
 
 function CategoryRow({ index, category }) {
   const [isEditOpen, setIsEditOpen] = useState(false);
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
+
+  const { isDeleting, removeCategory } = useRemoveCategory();
 
   return (
     <Table.Row>
@@ -33,7 +38,10 @@ function CategoryRow({ index, category }) {
               onClose={() => setIsEditOpen(false)}
               title={`ویرایش ${category.title}`}
             >
-              ...
+              <CreateCategoryForm
+                onClose={() => setIsEditOpen(false)}
+                categoryToEdit={category}
+              />
             </Modal>
           </>
 
@@ -47,7 +55,16 @@ function CategoryRow({ index, category }) {
               onClose={() => setIsDeleteOpen(false)}
               title={`حذف ${category.title}`}
             >
-              ...
+              <ConfirmDelete
+                resourceName={category.title}
+                onClose={() => setIsDeleteOpen(false)}
+                onConfirm={() =>
+                  removeCategory(category._id, {
+                    onSuccess: () => setIsDeleteOpen(false),
+                  })
+                }
+                disabled={isDeleting ? true : false}
+              />
             </Modal>
           </>
         </div>
