@@ -35,7 +35,7 @@ function CreateCategoryForm({ onClose, categoryToEdit = {} }) {
 
     if (isEditSession) {
       editCategory(
-        { id: editId, newCategory },
+        { id: editId, data: newCategory },
         {
           onSuccess: () => {
             onClose();
