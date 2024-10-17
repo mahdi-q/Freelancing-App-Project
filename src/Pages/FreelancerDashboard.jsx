@@ -1,5 +1,5 @@
 import Stats from "../Features/Freelancer/Stats";
-import useProposals from "../Features/Proposals/useProposals";
+import useProposals from "../Hooks/useProposals";
 import DashboardHeader from "../UI/DashboardHeader";
 import Loader from "../UI/Loader";
 

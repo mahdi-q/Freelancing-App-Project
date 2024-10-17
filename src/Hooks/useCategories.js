@@ -19,5 +19,5 @@ export default function useCategories() {
     value: category.englishTitle,
   }));
 
-  return { isLoading, categories, transformedCategories };
+  return { isLoading, categories, transformedCategories,rawCategories };
 }
