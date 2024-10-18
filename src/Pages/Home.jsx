@@ -3,7 +3,7 @@ import Header from "../UI/Header";
 function Home() {
   return (
     <div className="">
-      <Header />
+      <Header home />
 
       <div className="mb-[100px]">
         <div className="h-[470px] bg-primary-400 sm:h-[300px]">

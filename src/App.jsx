@@ -23,71 +23,74 @@ import Users from "./Pages/Users";
 import Projects from "./Pages/Projects";
 import Proposals from "./Pages/Proposals";
 import Categories from "./Pages/Categories";
+import { ToggleProvider } from "./Contexts/ToggleContext";
 
 const queryClient = new QueryClient();
 
 function App() {
   return (
-    <DarkModeProvider>
-      <QueryClientProvider client={queryClient}>
-        <ReactQueryDevtools initialIsOpen={false} />
+    <ToggleProvider>
+      <DarkModeProvider>
+        <QueryClientProvider client={queryClient}>
+          <ReactQueryDevtools initialIsOpen={false} />
 
-        <Toaster />
+          <Toaster />
 
-        <Routes>
-          <Route path="/auth" element={<Auth />} />
-          <Route path="/complete-profile" element={<CompleteProfile />} />
+          <Routes>
+            <Route path="/auth" element={<Auth />} />
+            <Route path="/complete-profile" element={<CompleteProfile />} />
 
-          <Route
-            path="/owner"
-            element={
-              <ProtectedRoute>
-                <OwnerLayout />
-              </ProtectedRoute>
-            }
-          >
-            <Route index element={<Navigate to="dashboard" replace />} />
-            <Route path="dashboard" element={<OwnerDashboard />} />
-            <Route path="projects" element={<OwnerProjects />} />
-            <Route path="projects/:id" element={<OwnerProject />} />
-          </Route>
+            <Route
+              path="/owner"
+              element={
+                <ProtectedRoute>
+                  <OwnerLayout />
+                </ProtectedRoute>
+              }
+            >
+              <Route index element={<Navigate to="dashboard" replace />} />
+              <Route path="dashboard" element={<OwnerDashboard />} />
+              <Route path="projects" element={<OwnerProjects />} />
+              <Route path="projects/:id" element={<OwnerProject />} />
+            </Route>
 
-          <Route
-            path="/freelancer"
-            element={
-              <ProtectedRoute>
-                <FreelancerLayout />
-              </ProtectedRoute>
-            }
-          >
-            <Route index element={<Navigate to="dashboard" replace />} />
-            <Route path="dashboard" element={<FreelancerDashboard />} />
-            <Route path="projects" element={<SubmittedProjects />} />
-            <Route path="proposals" element={<FreelancerProposals />} />
-          </Route>
+            <Route
+              path="/freelancer"
+              element={
+                <ProtectedRoute>
+                  <FreelancerLayout />
+                </ProtectedRoute>
+              }
+            >
+              <Route index element={<Navigate to="dashboard" replace />} />
+              <Route path="dashboard" element={<FreelancerDashboard />} />
+              <Route path="projects" element={<SubmittedProjects />} />
+              <Route path="proposals" element={<FreelancerProposals />} />
+            </Route>
 
-          <Route
-            path="/admin"
-            element={
-              <ProtectedRoute>
-                <AdminLayout />
-              </ProtectedRoute>
-            }
-          >
-            <Route index element={<Navigate to="dashboard" replace />} />
-            <Route path="dashboard" element={<AdminDashboard />} />
-            <Route path="users" element={<Users />} />
-            <Route path="projects" element={<Projects />} />
-            <Route path="proposals" element={<Proposals />} />
-            <Route path="categories" element={<Categories />} />
-          </Route>
+            <Route
+              path="/admin"
+              element={
+                <ProtectedRoute>
+                  <AdminLayout />
+                </ProtectedRoute>
+              }
+            >
+              <Route index element={<Navigate to="dashboard" replace />} />
+              <Route path="dashboard" element={<AdminDashboard />} />
+              <Route path="users" element={<Users />} />
+              <Route path="projects" element={<Projects />} />
+              <Route path="proposals" element={<Proposals />} />
+              <Route path="categories" element={<Categories />} />
+            </Route>
 
-          <Route path="/" element={<Home />} />
-          <Route path="*" element={<NotFound />} />
-          <Route path="/not-access" element={<NotAccess />} />
-        </Routes>
-      </QueryClientProvider>
-    </DarkModeProvider>
+            <Route path="/" element={<Home />} />
+            <Route path="*" element={<NotFound />} />
+            <Route path="/not-access" element={<NotAccess />} />
+          </Routes>
+        </QueryClientProvider>
+      </DarkModeProvider>
+    </ToggleProvider>
   );
 }
 

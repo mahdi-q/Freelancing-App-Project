@@ -1,12 +1,16 @@
 import { NavLink } from "react-router-dom";
+import { useToggle } from "../Contexts/ToggleContext";
 
 function CustomNavlink({ children, to }) {
   const navLinkClass =
     "flex items-center gap-x-2 rounded-md p-2 transition-all duration-300";
 
+  const { setIsToggleOpen } = useToggle();
+
   return (
     <li>
       <NavLink
+        onClick={() => setIsToggleOpen(false)}
         to={to}
         className={({ isActive }) =>
           isActive
