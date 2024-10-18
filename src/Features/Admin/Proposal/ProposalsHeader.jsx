@@ -1,11 +1,12 @@
 import FilterDropDown from "../../../UI/FilterDropDown";
+import Filters from "../../../UI/Filters";
 
 function ProposalsHeader() {
   return (
     <div className="mb-8 flex items-center justify-between px-4">
       <h1 className="text-xl font-black text-secondary-700">لیست درخواست ها</h1>
 
-      <div className="flex flex-row-reverse items-center gap-x-4">
+      <Filters>
         <FilterDropDown
           filterField="status"
           options={[
@@ -41,7 +42,7 @@ function ProposalsHeader() {
             },
           ]}
         />
-      </div>
+      </Filters>
     </div>
   );
 }

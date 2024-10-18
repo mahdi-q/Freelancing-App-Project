@@ -1,6 +1,7 @@
 import useCategories from "../../../Hooks/useCategories";
 import FilterButton from "../../../UI/FilterButton";
 import FilterDropDown from "../../../UI/FilterDropDown";
+import Filters from "../../../UI/Filters";
 
 function ProjectsHeader() {
   const { transformedCategories } = useCategories();
@@ -9,7 +10,7 @@ function ProjectsHeader() {
     <div className="mb-8 flex items-center justify-between px-4">
       <h1 className="text-xl font-black text-secondary-700">لیست پروژه ها</h1>
 
-      <div className="flex flex-row-reverse items-center gap-x-4">
+      <Filters>
         <FilterDropDown
           filterField="category"
           options={[
@@ -53,7 +54,7 @@ function ProjectsHeader() {
             },
           ]}
         />
-      </div>
+      </Filters>
     </div>
   );
 }
