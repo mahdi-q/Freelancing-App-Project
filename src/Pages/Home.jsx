@@ -6,22 +6,22 @@ function Home() {
       <Header />
 
       <div className="mb-[100px]">
-        <div className="h-[300px] bg-primary-400">
-          <div className="container flex items-center justify-between xl:max-w-screen-lg">
+        <div className="h-[470px] bg-primary-400 sm:h-[300px]">
+          <div className="container flex flex-col items-center justify-evenly gap-y-4 sm:flex-row xl:max-w-screen-lg">
             <img
-              className="h-[335px] w-[600px]"
+              className="h-[335px] w-[550px]"
               src="/Images/header.png"
               alt="header image"
             />
 
-            <span className="inline-block w-[400px] text-wrap text-center text-5xl font-black leading-[4.5rem] text-secondary-800">
+            <span className="inline-block w-[300px] text-wrap text-center text-3xl font-black leading-[3rem] text-secondary-800 lg:text-4xl lg:leading-[3.5rem] xl:w-[400px] xl:text-5xl xl:leading-[4rem]">
               به سایت فریلنسری خوش آمدید
             </span>
           </div>
         </div>
 
-        <div className="grid-rows-[10px _ 1fr] container mt-16 grid grid-cols-2 justify-items-center text-secondary-900 xl:max-w-screen-lg">
-          <span className="col-span-2 mb-12 text-2xl font-bold">
+        <div className="grid-rows-[10px _ 1fr] container mt-16 grid grid-cols-1 justify-items-center gap-y-16 text-secondary-900 sm:grid-cols-2 xl:max-w-screen-lg">
+          <span className="text-xl font-bold sm:col-span-2 sm:text-2xl">
             این سایت برای چه کسانی مناسب می باشد
           </span>
 
@@ -60,12 +60,12 @@ function Home() {
           </div>
         </div>
 
-        <div className="grid-rows-[10px _ 1fr] container mt-16 grid grid-cols-2 items-center justify-items-center text-secondary-900 xl:max-w-screen-lg">
-          <span className="col-span-2 mb-8 text-2xl font-bold">
+        <div className="grid-rows-[10px _ 1fr] container mt-16 grid grid-cols-1 items-center justify-items-center gap-y-8 text-secondary-900 md:grid-cols-2 xl:max-w-screen-lg">
+          <span className="text-xl font-bold sm:text-2xl md:col-span-2">
             قابلیت های این سایت
           </span>
 
-          <ul className="flex list-disc flex-col gap-y-4 text-xl">
+          <ul className="flex list-disc flex-col gap-y-4 text-base sm:text-lg">
             <li>
               تغییر دادن تم سایت به کمک{" "}
               <a
@@ -97,7 +97,7 @@ function Home() {
           </ul>
 
           <img
-            className="h-[250px] w-[450px]"
+            className="row-start-2 h-[250px] w-[450px] md:col-start-2"
             src="/Images/features.png"
             alt="features image"
           />
