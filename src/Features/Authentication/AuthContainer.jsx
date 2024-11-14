@@ -9,7 +9,7 @@ import useUser from "./useUser";
 import { useNavigate } from "react-router-dom";
 
 function AuthContainer() {
-  const [step, setStep] = useState(2);
+  const [step, setStep] = useState(1);
 
   const navigate = useNavigate();
 
