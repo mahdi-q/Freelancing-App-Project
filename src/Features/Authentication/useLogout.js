@@ -11,7 +11,7 @@ export default function useLogout() {
     mutationFn: logoutApi,
 
     onSuccess: () => {
-      queryClient.removeQueries();
+      queryClient.removeQueries({ queryKey: ["user"] });
 
       navigate("/auth", { replace: true });
     },

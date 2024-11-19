@@ -15,7 +15,7 @@ function CompleteProfileForm() {
   const { user } = useUser();
 
   useEffect(() => {
-    if (user) navigate("/", { replace: true });
+    if (user.isActive) return navigate("/", { replace: true });
   }, [user, navigate]);
 
   const {

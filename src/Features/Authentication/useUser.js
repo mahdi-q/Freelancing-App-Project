@@ -8,7 +8,7 @@ export default function useUser() {
     retry: false,
   });
 
-  const { user } = data || {};
+  const { user = {} } = data || {};
 
   return { isLoading, user };
 }

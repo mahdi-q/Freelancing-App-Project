@@ -2,7 +2,7 @@ import Empty from "../../../UI/Empty";
 import Loader from "../../../UI/Loader";
 import Table from "../../../UI/Table";
 import useUsers from "../useUsers";
-import UserRow from "./userRow";
+import UserRow from "./UserRow";
 
 function UsersTable() {
   const { isLoading, users } = useUsers();

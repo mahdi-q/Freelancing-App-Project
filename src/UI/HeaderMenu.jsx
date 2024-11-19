@@ -16,7 +16,7 @@ function HeaderMenu() {
   return (
     <div>
       <ul className="flex items-center gap-x-4">
-        {user && (
+        {user.isActive && (
           <li className="flex">
             <Link to={`/${ROLES[user.role]}/dashboard`}>
               <HiOutlineUser className="h-5 w-5 text-primary-800 hover:text-primary-900" />
@@ -28,7 +28,7 @@ function HeaderMenu() {
           <DarkModeToggle />
         </li>
 
-        <li className="flex">{user ? <Logout /> : <Login />}</li>
+        <li className="flex">{user.isActive ? <Logout /> : <Login />}</li>
       </ul>
     </div>
   );
