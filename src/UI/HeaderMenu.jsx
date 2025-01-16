@@ -4,6 +4,7 @@ import DarkModeToggle from "./DarkModeToggle";
 import Logout from "../Features/Authentication/Logout";
 import useUser from "../Features/Authentication/useUser";
 import Login from "../Features/Authentication/Login";
+import AdminLogin from "../Features/Authentication/AdminLogin";
 
 const ROLES = {
   ADMIN: "admin",
@@ -11,11 +12,14 @@ const ROLES = {
   FREELANCER: "freelancer",
 };
 
-function HeaderMenu() {
+function HeaderMenu({ home }) {
   const { user } = useUser();
+
   return (
     <div>
-      <ul className="flex items-center gap-x-4">
+      <ul className="flex items-center gap-x-2 md:gap-x-4">
+        {home && <AdminLogin />}
+
         {user.isActive && (
           <li className="flex">
             <Link to={`/${ROLES[user.role]}/dashboard`}>
