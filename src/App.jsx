@@ -24,6 +24,7 @@ import Projects from "./Pages/Projects";
 import Proposals from "./Pages/Proposals";
 import Categories from "./Pages/Categories";
 import { ToggleProvider } from "./Contexts/ToggleContext";
+import AdminAuth from "./Pages/AdminAuth";
 
 const queryClient = new QueryClient();
 
@@ -37,6 +38,7 @@ function App() {
           <Toaster />
 
           <Routes>
+            <Route path="/admin-auth" element={<AdminAuth />} />
             <Route path="/auth" element={<Auth />} />
             <Route path="/complete-profile" element={<CompleteProfile />} />
 
