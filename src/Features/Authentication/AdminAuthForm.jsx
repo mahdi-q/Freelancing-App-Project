@@ -1,21 +1,31 @@
 import { useForm } from "react-hook-form";
-// import Loader from "../../UI/Loader";
+import Loader from "../../UI/Loader";
 import TextFieldInput from "../../UI/TextFieldInput";
+import useAdminLogin from "./useAdminLogin";
+import { useNavigate } from "react-router-dom";
 
 function AdminAuthForm() {
+  const navigate = useNavigate();
+
+  const { isPending, login } = useAdminLogin();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({
     defaultValues: {
-      email: "test@gmail.com",
-      password: 12345,
+      email: "admin@example.com",
+      password: "12345",
     },
   });
 
-  const onSubmit = () => {
-    console.log("admin panel");
+  const onSubmit = (data) => {
+    login(data, {
+      onSuccess: () => {
+        navigate("/admin");
+      },
+    });
   };
 
   return (
@@ -56,13 +66,13 @@ function AdminAuthForm() {
         type="password"
       />
 
-      {/* {false ? (
+      {isPending ? (
         <Loader />
-      ) : ( */}
-      <button type="submit" className="btn btn--primary w-full">
-        ورود به پنل ادمین
-      </button>
-      {/* )} */}
+      ) : (
+        <button type="submit" className="btn btn--primary w-full">
+          ورود به پنل ادمین
+        </button>
+      )}
     </form>
   );
 }

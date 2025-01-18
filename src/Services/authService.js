@@ -31,3 +31,7 @@ export function changeUserStatusApi({ id, data }) {
     .patch(`/admin/user/verify/${id}`, data)
     .then(({ data }) => data.data);
 }
+
+export function adminLogin(data) {
+  return http.post("/user/admin-auth", data).then(({ data }) => data.data);
+}
