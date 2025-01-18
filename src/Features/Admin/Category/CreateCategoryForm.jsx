@@ -28,7 +28,7 @@ function CreateCategoryForm({ onClose, categoryToEdit = {} }) {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm({ defaultValues: editValues });
+  } = useForm({ defaultValues: isEditSession ? editValues : { type: "project" } });
 
   const onSubmit = (data) => {
     const newCategory = { ...data };

@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Modal from "../../../UI/Modal";
 import Table from "../../../UI/Table";
-import { toPersianNumbers } from "../../../Utils/toPersianNumbers";
 import { TbStatusChange } from "react-icons/tb";
 import ChangeUserStatus from "./ChangeUserStatus";
 
@@ -27,7 +26,7 @@ const roles = {
 };
 
 function UserRow({ user, index }) {
-  const { name, email, phoneNumber, role, status } = user;
+  const { name, email, role, status } = user;
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -38,8 +37,6 @@ function UserRow({ user, index }) {
       <td>{name || "-"}</td>
 
       <td>{email || "-"}</td>
-
-      <td>{toPersianNumbers(phoneNumber)}</td>
 
       <td>{roles[role] || "-"}</td>
 
