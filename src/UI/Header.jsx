@@ -18,7 +18,11 @@ function Header({ home }) {
         <div className="flex items-center gap-x-2 md:gap-x-4">
           <Link to="/">
             <img
-              className="h-10 w-10 md:h-14 md:w-14"
+              className={
+                home
+                  ? "h-10 w-10 lg:h-14 lg:w-14"
+                  : "hidden h-10 w-10 md:block lg:h-14 lg:w-14"
+              }
               src="/logo.svg"
               alt="Logo"
             />
@@ -33,7 +37,7 @@ function Header({ home }) {
           <UserAvatar />
         </div>
 
-        <HeaderMenu home={home} />
+        <HeaderMenu />
       </div>
     </div>
   );

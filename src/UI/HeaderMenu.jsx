@@ -12,13 +12,13 @@ const ROLES = {
   FREELANCER: "freelancer",
 };
 
-function HeaderMenu({ home }) {
+function HeaderMenu() {
   const { user } = useUser();
 
   return (
     <div>
       <ul className="flex items-center gap-x-2 md:gap-x-4">
-        {home && <AdminLogin />}
+      <AdminLogin />
 
         {user.isActive && (
           <li className="flex">
