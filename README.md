@@ -1,4 +1,4 @@
-# Freelancing App Project
+# 🧑‍💻 Freelancing App Project
 
 A web application where employers can create projects, and freelancers can carry out these projects.
 
@@ -37,18 +37,29 @@ Key packages used in this project:
 - **react-tag-input-component**: Tag input component for managing multiple tags.
 
 ## Project Structure
+ 
+  ```bash
+project-root/
+│
+├── public/           # Public assets available directly
+│ ├── Fonts/          # Custom fonts used in the project
+│ └── Images/         # Static images and icons
+│
+├── src/              # Main source code
+│ ├── Contexts/       # React context providers for global state
+│ ├── Features/       # Components representing the project's main features
+│ ├── Hooks/          # Custom React hooks
+│ ├── Pages/          # Different pages/routes in the application
+│ ├── Services/       # API & data fetching logic
+│ ├── UI/             # Shared UI elements (buttons, inputs, modals, etc.)
+│ ├── Utils/          # Utility/helper functions
+│ ├── App.jsx         # Root component that defines the app structure
+│ ├── index.css       # Global stylesheet for the application
+│ └── main.jsx        # Application entry point that renders the root component
+│
+└── README.md         # Project documentation
 
-- `public/` - Contains static assets and public files.
-   - `Fonts/` - Fonts used in the project.
-   - `Images/` - Images used in the project.
-- `src/` - Contains the main source code for the project.
-  - `Contexts/` - Provides dynamic props for use across multiple components.
-  - `Features/` - Components representing the project's main features.
-  - `Hooks/` - Custom hooks used throughout the project.
-  - `Pages/` - Different pages/routes in the application.
-  - `Services/` - API service files for data fetching.
-  - `UI/` - Reusable UI components frequently used in the project.
-  - `Utils/` - Utility functions shared across the application.
+```
 
 ## Acknowledgements
 
@@ -57,7 +68,3 @@ Special thanks to [Saheb Mohammadi](https://github.com/sahebmohammadi) for devel
 ## Contact Information
 
 For any questions or feedback, please reach out at [ghasemi84mahdi@gmail.com](mailto:ghasemi84mahdi@gmail.com).
-
----
-
-Thank you for using the Freelancing App!
