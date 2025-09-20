@@ -1,6 +1,6 @@
 # 🧑‍💻 Freelancing App Project
 
-A web application where employers can create projects, and freelancers can carry out these projects.
+A web platform where employers can post projects, freelancers can take them on, and all tasks are managed through a simple workflow.
 
 ## Table of Contents
 
