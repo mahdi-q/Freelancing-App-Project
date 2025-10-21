@@ -18,7 +18,7 @@ function HeaderMenu() {
   return (
     <div>
       <ul className="flex items-center gap-x-2 md:gap-x-4">
-      <AdminLogin />
+        {user.role !== "ADMIN" && <AdminLogin />}
 
         {user.isActive && (
           <li className="flex">

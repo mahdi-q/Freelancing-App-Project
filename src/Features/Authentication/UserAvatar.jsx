@@ -1,4 +1,3 @@
-import truncateText from "../../Utils/truncateText";
 import useUser from "./useUser";
 
 function UserAvatar() {
@@ -13,8 +12,8 @@ function UserAvatar() {
           className="h-7 w-7 rounded-full object-cover object-center"
         />
 
-        <span className="text-nowrap text-sm md:text-base">
-          {truncateText(user?.name, 6)}
+        <span className="truncate text-nowrap text-sm md:text-base">
+          {user?.name}
         </span>
       </div>
     );

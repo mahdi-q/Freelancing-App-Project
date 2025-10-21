@@ -13,7 +13,11 @@ export default function useLogout() {
     onSuccess: () => {
       queryClient.removeQueries({ queryKey: ["user"] });
 
-      navigate("/auth", { replace: true });
+      navigate("/", { replace: true });
+      
+      if (window.location.pathname === "/") {
+        window.location.reload();
+      }
     },
   });
 

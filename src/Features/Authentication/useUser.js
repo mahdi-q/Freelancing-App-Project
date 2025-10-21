@@ -5,7 +5,7 @@ export default function useUser() {
   const { isLoading, data } = useQuery({
     queryKey: ["user"],
     queryFn: getUser,
-    retry: false,
+    retry: 2,
   });
 
   const { user = {} } = data || {};

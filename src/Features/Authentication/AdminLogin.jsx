@@ -1,14 +1,18 @@
-import { useNavigate } from "react-router-dom";
+import useAdminLogin from "./useAdminLogin";
 
 function AdminLogin() {
-  const navigate = useNavigate();
+  const { isPending, login } = useAdminLogin();
+
+  const loginAdminHandler = () => {
+    login({ phoneNumber: "09111111111" });
+  };
 
   return (
     <button
-      className="btn btn--primary p-2 text-sm"
-      onClick={() => navigate("/admin-auth")}
+      className="btn btn--primary p-2 whitespace-nowrap text-sm"
+      onClick={loginAdminHandler}
     >
-      ورود به پنل ادمین
+      {isPending ? "در حال ورود" : "ورود به پنل ادمین"}
     </button>
   );
 }

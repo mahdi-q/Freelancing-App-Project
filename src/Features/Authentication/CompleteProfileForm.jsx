@@ -35,22 +35,16 @@ function CompleteProfileForm() {
 
       toast.success(message);
 
+      navigate("/");
+
       if (user.status === 0) {
-        navigate("/");
         toast("اطلاعات حساب کاربری شما رد شده است.");
         return;
       }
 
       if (user.status === 1) {
-        navigate("/");
         toast("اطلاعات حساب کاربری  شما در حال بررسی است.");
         return;
-      }
-
-      if (user.status === 2) {
-        if (user.role === "OWNER") return navigate("/owner");
-
-        if (user.role === "FREELANCER") return navigate("/freelancer");
       }
     } catch (error) {
       toast.error(error?.response?.data?.message);
