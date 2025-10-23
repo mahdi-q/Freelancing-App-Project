@@ -10,6 +10,7 @@ function ProjectTable() {
   if (isLoading) return <Loader />;
 
   if (!projects.length) return <Empty resourceName={"پروژه ای"} />;
+  console.log(projects);
 
   return (
     <Table>
@@ -27,9 +28,11 @@ function ProjectTable() {
       </Table.Header>
 
       <Table.Body>
-        {projects.map((project, index) => (
-          <ProjectRow key={project._id} project={project} index={index} />
-        ))}
+        {projects
+          .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+          .map((project, index) => (
+            <ProjectRow key={project._id} project={project} index={index} />
+          ))}
       </Table.Body>
     </Table>
   );

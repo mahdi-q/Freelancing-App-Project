@@ -1,7 +1,10 @@
 import { MdAssignmentAdd } from "react-icons/md";
 import Table from "../../../UI/Table";
 import toLocalDateShort from "../../../Utils/toLocalDateShort";
-import { toPersianNumbersWithComma } from "../../../Utils/toPersianNumbers";
+import {
+  toPersianNumbers,
+  toPersianNumbersWithComma,
+} from "../../../Utils/toPersianNumbers";
 import truncateText from "../../../Utils/truncateText";
 import Modal from "../../../UI/Modal";
 import { useState } from "react";
@@ -25,7 +28,7 @@ function ProjectRow({ index, project }) {
 
   return (
     <Table.Row>
-      <td>{index + 1}</td>
+      <td>{toPersianNumbers(index + 1)}</td>
 
       <td>{truncateText(title, 40)}</td>
 

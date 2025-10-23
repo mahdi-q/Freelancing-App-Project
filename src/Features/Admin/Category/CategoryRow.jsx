@@ -7,6 +7,7 @@ import { HiOutlineTrash } from "react-icons/hi";
 import truncateText from "../../../Utils/truncateText";
 import ConfirmDelete from "../../../UI/ConfirmDelete";
 import useRemoveCategory from "./useRemoveCategory";
+import { toPersianNumbers } from "../../../Utils/toPersianNumbers";
 
 function CategoryRow({ index, category }) {
   const [isEditOpen, setIsEditOpen] = useState(false);
@@ -16,7 +17,7 @@ function CategoryRow({ index, category }) {
 
   return (
     <Table.Row>
-      <td>{index + 1}</td>
+      <td>{toPersianNumbers(index + 1)}</td>
 
       <td>{category.title}</td>
 

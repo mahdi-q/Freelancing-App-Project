@@ -63,8 +63,8 @@ function CreateCategoryForm({ onClose, categoryToEdit = {} }) {
         validationSchema={{
           required: "نوشتن عنوان دسته بندی ضروری می باشد",
           minLength: {
-            value: 8,
-            message: "عنوان دسته بندی باید بیشتر از ۸ کارکتر باشد",
+            value: 3,
+            message: "عنوان دسته بندی باید بیشتر از ۳ کارکتر باشد",
           },
         }}
         errors={errors}
@@ -78,8 +78,8 @@ function CreateCategoryForm({ onClose, categoryToEdit = {} }) {
         validationSchema={{
           required: "نوشتن توضیحات دسته بندی ضروری می باشد",
           maxLength: {
-            value: 50,
-            message: "توضیحات دسته بندی باید کمتر از ۵۰ کارکتر باشد",
+            value: 200,
+            message: "توضیحات دسته بندی باید کمتر از ۲۰۰ کارکتر باشد",
           },
         }}
         errors={errors}

@@ -84,8 +84,8 @@ function CreateProjectForm({ onClose, projectToEdit = {} }) {
         validationSchema={{
           required: "نوشتن عنوان پروژه ضروری می باشد",
           minLength: {
-            value: 8,
-            message: "عنوان پروژه باید بیشتر از ۸ کارکتر باشد",
+            value: 3,
+            message: "عنوان پروژه باید بیشتر از ۳ کارکتر باشد",
           },
         }}
         errors={errors}
@@ -99,8 +99,8 @@ function CreateProjectForm({ onClose, projectToEdit = {} }) {
         validationSchema={{
           required: "نوشتن توضیحات پروژه ضروری می باشد",
           maxLength: {
-            value: 50,
-            message: "توضیحات پروژه باید کمتر از ۵۰ کارکتر باشد",
+            value: 200,
+            message: "توضیحات پروژه باید کمتر از ۲۰۰ کارکتر باشد",
           },
         }}
         errors={errors}

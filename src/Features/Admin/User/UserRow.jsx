@@ -3,6 +3,7 @@ import Modal from "../../../UI/Modal";
 import Table from "../../../UI/Table";
 import { TbStatusChange } from "react-icons/tb";
 import ChangeUserStatus from "./ChangeUserStatus";
+import { toPersianNumbers } from "../../../Utils/toPersianNumbers";
 
 const statusStyle = [
   {
@@ -32,7 +33,7 @@ function UserRow({ user, index }) {
 
   return (
     <Table.Row>
-      <td>{index + 1}</td>
+      <td>{toPersianNumbers(index + 1)}</td>
 
       <td>{name || "-"}</td>
 

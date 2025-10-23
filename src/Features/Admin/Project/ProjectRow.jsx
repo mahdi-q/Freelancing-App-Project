@@ -1,6 +1,9 @@
 import Table from "../../../UI/Table";
 import truncateText from "../../../Utils/truncateText";
-import { toPersianNumbersWithComma } from "../../../Utils/toPersianNumbers";
+import {
+  toPersianNumbers,
+  toPersianNumbersWithComma,
+} from "../../../Utils/toPersianNumbers";
 import toLocalDateShort from "../../../Utils/toLocalDateShort";
 
 const statusStyle = {
@@ -19,7 +22,7 @@ function ProjectRow({ index, project }) {
 
   return (
     <Table.Row>
-      <td>{index + 1}</td>
+      <td>{toPersianNumbers(index + 1)}</td>
 
       <td>{truncateText(title, 40)}</td>
 

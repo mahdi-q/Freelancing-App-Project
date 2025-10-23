@@ -15,6 +15,14 @@ function CheckOTPForm({ setStep, phoneNumber, onResendOtp, otpResponse }) {
   const navigate = useNavigate();
 
   useEffect(() => {
+    if (document) {
+      console.log(document.getElementById("otpInput"));
+
+      document.getElementById("otpInput").focus();
+    }
+  }, []);
+
+  useEffect(() => {
     const timer = time > 0 && setInterval(() => setTime((t) => t - 1), 1000);
 
     return () => {
@@ -88,7 +96,7 @@ function CheckOTPForm({ setStep, phoneNumber, onResendOtp, otpResponse }) {
           onChange={setOtp}
           numInputs={6}
           renderSeparator={<span className="text-secondary-500">-</span>}
-          renderInput={(props) => <input {...props} />}
+          renderInput={(props) => <input id="otpInput" {...props} />}
           containerStyle={{
             display: "flex",
             flexDirection: "row-reverse",
